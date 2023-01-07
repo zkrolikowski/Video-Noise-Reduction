@@ -10,7 +10,7 @@ def use_anlmdn():
     video = inFile.video
 
     # render output
-    out = ffmpeg.output(audio2, video,'.\\TestFiles\\outFileNoNoise_anlmdn.mp4', acodec='flac').overwrite_output()
+    out = ffmpeg.output(audio2, video,'.\\TestFiles\\outFileNoNoise_anlmdn.mp4', acodec='aac').overwrite_output()
     out.run()
 
 def use_afftdn():
@@ -22,7 +22,7 @@ def use_afftdn():
     video = inFile.video
 
     # render output
-    out = ffmpeg.output(audio2, video,'.\\TestFiles\\outFileNoNoise_afftdn.mp4', acodec='flac').overwrite_output()
+    out = ffmpeg.output(audio2, video,'.\\TestFiles\\outFileNoNoise_afftdn.mp4', acodec='aac').overwrite_output()
     out.run()
 
 def use_arnndn():
@@ -34,7 +34,7 @@ def use_arnndn():
     video = inFile.video
 
     # render output
-    out = ffmpeg.output(audio2, video,'.\\TestFiles\\outFileNoNoise_arnndn.mp4', acodec='flac').overwrite_output()
+    out = ffmpeg.output(audio2, video,'.\\TestFiles\\outFileNoNoise_arnndn.mp4', acodec='aac').overwrite_output()
     out.run()
 
 '''   
@@ -50,13 +50,13 @@ def main():
     inFile = ffmpeg.input('./TestFiles/inFileNoise.mp4')
     ## convert audio to raw pcm
     out, _ = (inFile.audio
-    .output('./TestFiles/tempAudio.wav', acodec='pcm_s16le', ac=1, ar='48k')
+    .output('./TestFiles/tempAudio.wav', acodec='pcm_s16le', ac=1, ar='48k', map_metadata=-1)
     .overwrite_output()
     .run(capture_stdout=True)) 
 
 
     #use_anlmdn()
-    use_afftdn()
+    #use_afftdn()
     #use_arnndn() 
    
 
